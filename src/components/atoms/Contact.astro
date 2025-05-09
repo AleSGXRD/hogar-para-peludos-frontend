@@ -1,0 +1,167 @@
+<section class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+      <div class="max-w-4xl mx-auto">
+        <div class="text-center mb-12">
+          <h2 class="text-3xl md:text-4xl font-bold text-gray-800">
+            <span class="text-[#76ca99]">Reporta</span> una mascota
+          </h2>
+          <p class="mt-4 text-lg text-gray-600">
+            ¿Has visto una mascota perdida o quieres poner una en adopción? ¡Contáctanos!
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+          <!-- Formulario de Contacto -->
+          <div class="bg-gray-50 p-8 rounded-xl shadow-sm">
+            <h3 class="text-xl font-bold mb-6 text-gray-800">Envíanos un mensaje</h3>
+            
+            <form id="contact-form" enctype="multipart/form-data" method="POST" class="space-y-6">
+              <div>
+                <label for="name" class="block text-sm font-medium text-gray-700 mb-1">Tu nombre</label>
+                <input 
+                  type="text" 
+                  id="name" 
+                  name="name" 
+                  required
+                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#76ca99] focus:border-transparent transition-all"
+                >
+              </div>
+
+              <div>
+                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Tu correo</label>
+                <input 
+                  type="email" 
+                  id="email" 
+                  name="email" 
+                  required
+                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#76ca99] focus:border-transparent transition-all"
+                >
+              </div>
+
+              <div>
+                <label for="subject" class="block text-sm font-medium text-gray-700 mb-1">Asunto</label>
+                <select 
+                  id="subject" 
+                  name="subject" 
+                  required
+                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#76ca99] focus:border-transparent transition-all"
+                >
+                  <option value="">Selecciona una opción</option>
+                  <option value="mascota-perdida">Reportar mascota perdida</option>
+                  <option value="mascota-encontrada">Reportar mascota encontrada</option>
+                  <option value="poner-en-adopcion">Poner mascota en adopción</option>
+                  <option value="otro">Otro</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="message" class="block text-sm font-medium text-gray-700 mb-1">Mensaje</label>
+                <textarea 
+                  id="message" 
+                  name="message" 
+                  rows="4" 
+                  required
+                  class="w-full px-4 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-[#76ca99] focus:border-transparent transition-all"
+                ></textarea>
+              </div>
+
+              <button 
+                type="submit" 
+                class="w-full px-6 py-3 bg-[#76ca99] text-white font-medium rounded-lg hover:bg-[#5cb487] transition-colors shadow-md"
+              >
+                Enviar mensaje
+              </button>
+            </form>
+          </div>
+
+          <!-- Información de Contacto Directo -->
+          <div class="space-y-8">
+            <div>
+              <h3 class="text-xl font-bold mb-4 text-gray-800">Contacto directo</h3>
+              <p class="text-gray-600 mb-6">También puedes contactarme directamente por estos medios:</p>
+              
+              <div class="space-y-4">
+                <div class="flex items-start gap-4">
+                  <div class="bg-[#76ca99]/10 p-3 rounded-full text-[#76ca99]">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 0 0 2.22 0L21 8M5 19h14a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v10a2 2 0 0 0 2 2"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 class="font-medium text-gray-800">Correo electrónico</h4>
+                    <a href="mailto:tucorreo@ejemplo.com" class="text-[#76ca99] hover:underline">hogarparapeludos@gmail.com</a>
+                  </div>
+                </div>
+
+                <div class="flex items-start gap-4">
+                  <div class="bg-[#76ca99]/10 p-3 rounded-full text-[#76ca99]">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 class="font-medium text-gray-800">Teléfono/WhatsApp</h4>
+                    <a href="tel:+123456789" class="text-[#76ca99] hover:underline">+53 54634566</a>
+                  </div>
+                </div>
+
+                <!-- <div class="flex items-start gap-4">
+                  <div class="bg-[#76ca99]/10 p-3 rounded-full text-[#76ca99]">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                    </svg>
+                  </div>
+                  <div>
+                    <h4 class="font-medium text-gray-800">Redes Sociales</h4>
+                    <div class="flex gap-4 mt-2">
+                      <a href="#" class="text-gray-600 hover:text-[#76ca99] transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">...</svg>
+                      </a>
+                      <a href="#" class="text-gray-600 hover:text-[#76ca99] transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">...</svg>
+                      </a>
+                      <a href="#" class="text-gray-600 hover:text-[#76ca99] transition-colors">
+                        <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">...</svg>
+                      </a>
+                    </div>
+                  </div>
+                </div> -->
+              </div>
+            </div>
+
+            <div class="bg-[#f7fdfb] p-6 rounded-xl border border-[#76ca99]/20">
+              <h4 class="font-bold text-lg text-gray-800 mb-3">¿Qué información incluir?</h4>
+              <ul class="space-y-2 text-sm text-gray-600">
+                <li class="flex items-start gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#76ca99] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  <span>Ubicación exacta donde viste la mascota</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#76ca99] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  <span>Descripción detallada (color, tamaño, collar, etc.)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#76ca99] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  <span>Fotos si es posible (Enviarlas por WhatsApp)</span>
+                </li>
+                <li class="flex items-start gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#76ca99] flex-shrink-0" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/>
+                  </svg>
+                  <span>Tus datos de contacto para seguimiento</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+</section>
+<script src="../../lib/js/email.js"></script>

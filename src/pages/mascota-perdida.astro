@@ -1,0 +1,19 @@
+---
+import ListAdoptionCards from '../components/organisms/ListAdoptionCards.astro';
+import Layout from '../layouts/Layout.astro';
+import type { LostPet } from '~/lib/types/Pet';
+import pets from '../lib/json/pets-losted.json';
+
+const listPetsLost: LostPet[] = pets.pets.map(pet => ({
+    ...pet,
+    lostDate: new Date(pet.lostDate), // Asegúrate de convertir lostDate también
+    createdAt: new Date(pet.createdAt),
+    updatedAt: new Date(pet.updatedAt)
+})) as LostPet[]; // Type assertion aquí
+---
+
+<Layout>
+	<main class="w-full max-w-7xl mt-32 flex flex-col mx-auto">
+		<ListAdoptionCards list={listPetsLost}/>
+	</main>
+</Layout>

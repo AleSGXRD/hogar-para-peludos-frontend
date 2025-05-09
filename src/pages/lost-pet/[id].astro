@@ -1,0 +1,202 @@
+---
+import type { LostPet, Pet } from '~/lib/types/Pet';
+import petsData from '../../lib/json/pets-losted.json';
+import Layout from '../../layouts/Layout.astro';
+import { parsePetAge, parsePetSex, parsePetSize, parsePetType } from '../../lib/helpers/PetHelper';
+import Swiper3D from '../../components/atoms/Swiper3D.jsx';
+
+export async function getStaticPaths() {
+  const pets: LostPet[] = petsData.pets.map((pet: any) => ({
+    ...pet,
+    lostDate: new Date(pet.lostDate || pet.createdAt),
+    createdAt: new Date(pet.createdAt),
+    updatedAt: new Date(pet.updatedAt)
+  }));
+
+  return pets.map(pet => ({
+    params: { id: pet.id },
+    props: { pet }
+  }));
+}
+
+const petImages = ['/panda.jpg', '/icon.png', '/panda.jpg', '/icon.png'];
+const { pet } = Astro.props;
+---
+
+<Layout>
+  <main class="w-full max-w-7xl mt-32 flex flex-col mx-auto text-gray-800 px-4 lg:px-0">
+    <article class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <!-- Sección de imagen con alerta -->
+      <div class="flex flex-col justify-center relative">
+        <div class="absolute top-4 left-4 z-10 bg-red-600 text-white px-4 py-2 rounded-lg shadow-lg font-bold">
+          ¡MASCOTA PERDIDA!
+        </div>
+        <Swiper3D 
+          client:load 
+          images={petImages} 
+          petName={pet.petName} 
+        />
+      </div>
+
+      <!-- Contenido principal -->
+      <div class="flex flex-col h-full lg:mx-0 gap-2">
+        <!-- Encabezado con urgencia -->
+        <div class="border-b border-red-100 pb-4">
+          <h3 class="text-4xl font-semibold text-gray-900">{pet.petName}</h3>
+          <h5 class="font-light text-red-600 text-sm">
+            Perdido el {pet.lostDate.toLocaleDateString('es-ES', {
+              weekday: 'long',
+              year: 'numeric',
+              month: 'long',
+              day: 'numeric'
+            })}
+          </h5>
+        </div>
+
+        <!-- Descripción con énfasis -->
+        <div class="bg-red-50 border-l-4 border-red-500 p-4 my-4">
+          <p class="font-medium text-gray-800">{pet.description || 'No hay descripción adicional.'}</p>
+        </div>
+
+        <!-- Información crítica -->
+        <div class="bg-white p-4 rounded-xl shadow-md border border-red-100 mb-4 hover:-translate-y-1 cursor-default hover:shadow-md hover:border-red-200 transition-all">
+          <h4 class="font-bold text-lg text-red-700 mb-2 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0"/><circle cx="12" cy="10" r="3"/>
+            </svg>
+            Último avistamiento
+          </h4>
+          <p class="text-gray-800 font-medium">{pet.lastSeenLocation || pet.address}, {pet.province}</p>
+          {pet.lastSeenDetails && (
+            <p class="text-sm text-gray-600 mt-2">{pet.lastSeenDetails}</p>
+          )}
+        </div>
+
+        <!-- Características principales -->
+        <ul class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <!-- Especie -->
+          <li class="p-4 shadow-md rounded-xl bg-white flex items-center gap-4 border border-gray-100 hover:-translate-y-1 cursor-default hover:shadow-md hover:border-lime-200 transition-all">
+            <div class="p-3 rounded-lg bg-lime-100/50">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-lime-600" viewBox="0 0 24 24">
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.7 13.5c-1.1-2-1.441-2.5-2.7-2.5s-1.736.755-2.836 2.747c-.942 1.703-2.846 1.845-3.321 3.291c-.097.265-.145.677-.143.962c0 1.176.787 2 1.8 2c1.259 0 3-1 4.5-1s3.241 1 4.5 1c1.013 0 1.8-.823 1.8-2c0-.285-.049-.697-.146-.962c-.475-1.451-2.512-1.835-3.454-3.538m5.488-5.418A1 1 0 0 0 19.782 8h-.015c-.735.012-1.56.75-1.993 1.866c-.519 1.335-.28 2.7.538 3.052q.196.082.406.082c.739 0 1.575-.742 2.011-1.866c.516-1.335.273-2.7-.54-3.052zM9.474 9c.055 0 .109 0 .163-.011c.944-.128 1.533-1.346 1.32-2.722C10.754 4.97 9.91 4 9.025 4c-.055 0-.109 0-.163.011c-.944.128-1.533 1.346-1.32 2.722C7.746 8.026 8.59 9 9.475 9zm6.982-2.267c.214-1.376-.375-2.594-1.32-2.722A1 1 0 0 0 14.974 4c-.885 0-1.728.97-1.93 2.267c-.214 1.376.375 2.594 1.32 2.722q.081.01.162.011c.885 0 1.73-.974 1.93-2.267M5.69 12.918c.816-.352 1.054-1.719.536-3.052C5.79 8.742 4.955 8 4.217 8q-.211 0-.407.082c-.816.352-1.054 1.719-.536 3.052C3.71 12.258 4.545 13 5.283 13q.211 0 .407-.082"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-xs text-gray-500">Especie</div>
+              <div class="font-semibold">{parsePetType(pet.petType)}</div>
+            </div>
+          </li>
+
+          <!-- Sexo -->
+          <li class:list={"p-4 shadow-md rounded-xl bg-white flex items-center gap-4 border border-gray-100 hover:-translate-y-1 cursor-default hover:shadow-md transition-all "+ (pet.sex == 'male'? 'hover:border-blue-200 ' : 'hover:border-pink-200 ')}>
+            <div class:list={"p-3 rounded-lg " + (pet.sex == 'male'? 'bg-blue-100/50' : 'bg-pink-100/50')}>
+              {pet.sex == 'male' ? 
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-blue-600" viewBox="0 0 24 24">
+                  <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 14a5 5 0 1 0 10 0a5 5 0 1 0-10 0m14-9l-5.4 5.4M19 5h-5m5 0v5"/>
+                </svg>
+              :
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-pink-600" viewBox="0 0 24 24">
+                  <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 9a5 5 0 1 0 10 0A5 5 0 1 0 7 9m5 5v7m-3-3h6"/>
+                </svg>
+              }
+            </div>
+            <div>
+              <div class="text-xs text-gray-500">Sexo</div>
+              <div class="font-semibold">{parsePetSex(pet.sex)}</div>
+            </div>
+          </li>
+
+          <!-- Edad -->
+          <li class="p-4 shadow-md rounded-xl bg-white flex items-center gap-4 border border-gray-100 hover:-translate-y-1 cursor-default hover:shadow-md hover:border-teal-200 transition-all">
+            <div class="p-3 rounded-lg bg-teal-100/50">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-teal-600" viewBox="0 0 24 24">
+                <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm12-4v4M8 3v4m-4 4h16m-9 4h1m0 0v3"/>
+              </svg>
+            </div>
+            <div>
+              <div class="text-xs text-gray-500">Edad</div>
+              <div class="font-semibold">{parsePetAge(pet.age)}</div>
+            </div>
+          </li>
+
+          <!-- Recompensa -->
+          {pet.reward && (
+            <li class="p-4 shadow-md rounded-xl bg-white flex items-center gap-4 border border-amber-200 hover:-translate-y-1 cursor-default transition-all hover:shadow-md hover:border-amber-300">
+              <div class="p-3 rounded-lg bg-amber-100/50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-amber-600" viewBox="0 0 24 24">cursor-default
+                  <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 2v4m0 12v4M6.3 17.7l-2.8 2.8M17.7 6.3l2.8-2.8M17.7 17.7l2.8 2.8M6.3 6.3l-2.8-2.8M20 12h4M4 12h4m4 4a4 4 0 1 0 0-8a4 4 0 0 0 0 8"/>
+                </svg>
+              </div>
+              <div>
+                <div class="text-xs text-amber-700">Recompensa</div>
+                <div class="font-bold text-amber-800">{pet.reward}</div>
+              </div>
+            </li>
+          )}
+        </ul>
+
+        <!-- Contacto de emergencia -->
+        <div class="mt-6 p-4 bg-red-50 rounded-xl border border-red-200">
+          <h4 class="font-bold text-lg text-red-800 mb-3 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2a19.79 19.79 0 0 1-8.63-3.07a19.5 19.5 0 0 1-6-6a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72a12.84 12.84 0 0 0 .7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45a12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            Contacto inmediato
+          </h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <a href={`tel:${pet.contactPhone}`} class="flex items-center gap-3 p-3 bg-white rounded-lg hover:bg-red-100 transition-colors">
+              <div class="p-2 bg-red-100 rounded-full">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2a19.79 19.79 0 0 1-8.63-3.07a19.5 19.5 0 0 1-6-6a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72a12.84 12.84 0 0 0 .7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45a12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="text-xs text-gray-500">Teléfono</div>
+                <div class="font-semibold text-gray-800">{pet.contactPhone}</div>
+              </div>
+            </a>
+            {
+              pet.contactEmail &&
+              <a href={`mailto:${pet.contactEmail}`} class="flex items-center gap-3 p-3 bg-white rounded-lg hover:bg-red-100 transition-colors">
+                <div class="p-2 bg-red-100 rounded-full">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-red-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6l-10 7L2 6"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="text-xs text-gray-500">Correo</div>
+                  <div class="font-semibold text-sm text-gray-800">{pet.contactEmail}</div>
+                </div>
+              </a>
+            }
+          </div>
+        </div>
+
+        <!-- Información adicional -->
+        <div class="mt-6 pt-4 border-t border-gray-200">
+          <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+            <p class="text-sm text-gray-500">Reportado por: <span class="font-medium text-gray-700">{pet.contactName}</span></p>
+            <p class="text-sm text-gray-500">
+              Publicado el {pet.createdAt.toLocaleDateString('es-ES', {
+                year: 'numeric',
+                month: 'short',
+                day: 'numeric'
+              })}
+            </p>
+          </div>
+        </div>
+      </div>
+    </article>
+  </main>
+</Layout>
+
+<style>
+  /* Efecto de urgencia parpadeante */
+  @keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.8; }
+  }
+  .urgency-pulse {
+    animation: pulse 2s infinite;
+  }
+</style>

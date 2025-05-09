@@ -1,0 +1,32 @@
+
+
+@import "tailwindcss";
+
+body {
+    margin: 0;
+    background-image: linear-gradient(15deg, #d2d8dd 0%, #71f1a616 100%);
+    background-attachment: fixed;
+    font-family: Arial, sans-serif;
+}
+
+.swiper-button-next, 
+.swiper-button-prev {
+color: white !important;
+background: rgba(0,0,0,0.5) !important;
+width: 40px !important;
+height: 40px !important;
+border-radius: 50% !important;
+backdrop-filter: blur(4px) !important;
+}
+
+.swiper-button-next::after, 
+.swiper-button-prev::after {
+font-size: 1.2rem !important;
+}
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+.animate-spin {
+  animation: spin 1s linear infinite;
+}

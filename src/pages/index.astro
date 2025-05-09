@@ -1,11 +1,91 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import ListAdoptionCards from '../components/organisms/ListAdoptionCards.astro';
+import LayoutIndex from '../layouts/LayoutIndex.astro';
+import { getRecentLostPets } from '../lib/services/petService'; 
+import LostPetsSlider from '../components/molecules/LostPetsSlider';
+import Contact from '../components/atoms/Contact.astro'
+const recentLostPets = await getRecentLostPets(6);
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<LayoutIndex>
+  <main class="w-full min-h-screen relative overflow-hidden">
+    <!-- Fondo decorativo -->
+    
+    <!-- Contenido principal -->
+    <div class="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 flex flex-col lg:flex-row items-center justify-between gap-12">
+      <!-- Texto y CTA -->
+      <div class="flex-1 space-y-8 text-center lg:text-left order-2 lg:order-1">
+        <h1 class="text-5xl md:text-7xl font-bold text-gray-800 leading-tight">
+          Encuentra <span class="text-[#76ca99]">hogar</span><br>para los peludos
+        </h1>
+        
+        <p class="text-xl md:text-2xl text-gray-600 max-w-2xl">
+          Conectamos mascotas necesitadas con familias amorosas. Cada adopción cambia una vida.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+          <a href="/adoptar-mascota" class="px-8 py-3 bg-[#76ca99] text-white font-medium rounded-lg shadow-md hover:bg-[#5cb487] transition-all transform hover:-translate-y-1">
+            Ver mascotas
+          </a>
+          <a href="/contacto" class="px-8 py-3 border-2 border-[#76ca99] text-[#76ca99] font-medium rounded-lg hover:bg-[#76ca99]/10 transition-all">
+            Conócenos
+          </a>
+        </div>
+        
+        <div class="pt-8 flex flex-wrap justify-center lg:justify-start gap-6 text-gray-500">
+          <div class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#76ca99]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+            </svg>
+            <span>Adopciones responsables</span>
+          </div>
+          <!-- <div class="flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-[#76ca99]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 15a4 4 0 004 4h9a5 5 0 10-.1-9.999 5.002 5.002 0 10-9.78 2.096A4.001 4.001 0 003 15z"/>
+            </svg>
+            <span>+500 mascotas rescatadas</span>
+          </div> -->
+        </div>
+      </div>
+      
+      <!-- Imagen -->
+      <div class="flex-1 relative order-1 lg:order-2">
+        <div class="relative">
+          <img 
+            src="https://ptqxhogmwecyueleyhbn.supabase.co/storage/v1/object/public/hogar-para-peludos/icon-big.png" 
+            alt="Mascota feliz" 
+            class="w-full h-auto max-h-[480px] object-contain animate-float"
+            loading="eager"
+          >
+          <div class="absolute -inset-8 bg-[#96f7e4] rounded-full opacity-20 blur-xl -z-10"></div>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Sección de mascotas perdidas -->
+    <LostPetsSlider pets={recentLostPets} client:load />
+
+    <!-- Sección de Contacto - Añadir después del LostPetsSlider -->
+    <Contact></Contact>
+    {/* Ola decorativa inferior */}
+    <div class="relative">
+      <svg viewBox="0 0 1200 120" preserveAspectRatio="none" class="w-full h-16 md:h-24 rotate-180">
+        <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="fill-gray-100"></path>
+        <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="fill-gray-100"></path>
+        <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="fill-gray-100"></path>
+      </svg>
+    </div>
+    
+  </main>
+</LayoutIndex>
+
+<style is:global>
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+</style>

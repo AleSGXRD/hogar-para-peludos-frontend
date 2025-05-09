@@ -1,0 +1,76 @@
+---
+// Navbar.astro
+export interface Props{
+    hide: boolean;
+}
+const {hide} = Astro.props
+---
+
+<nav 
+    id={hide == true ? "main-navbar" : "" }
+  class:list={"fixed top-0 w-full flex flex-row justify-center items-center backdrop-blur-md bg-[#ffffff82] shadow-md z-40 transition-all duration-300 ease-in-out transform " + (hide==true? "-translate-y-full opacity-0": "")}
+>
+    <div class="w-full max-w-7xl flex flex-row justify-between items-center rounded-lg px-8 py-4">
+        <a href='/' class="flex flex-row items-center gap-4">
+            <img class="h-12 w-12 rounded-2xl" src={"https://ptqxhogmwecyueleyhbn.supabase.co/storage/v1/object/public/hogar-para-peludos/icon.png"} alt="Logo Hogar para peludos">
+            <div class="md:flex md:flex-col hidden">
+                <h1 class="font-bold text-2xl text-gray-800 tracking-tight">Hogar para peludos</h1>
+                <h3 class="font-extralight text-xs text-gray-600 tracking-tight">Donde le brindamos a nuestras mascotas un nuevo hogar</h3>
+            </div>
+        </a>
+        <div class="lg:flex flex-row gap-8 items-center text-gray-800 hidden">
+            <a class="hover:text-gray-700 border-b-2 border-transparent hover:border-[#76ca99] transition-all" href="/adoptar-mascota">Adoptar</a>
+            <a class="hover:text-gray-700 border-b-2 border-transparent hover:border-[#76ca99] transition-all" href="/mascota-perdida">En busqueda</a>
+            <a class="hover:text-gray-700 border-b-2 border-transparent hover:border-[#76ca99] transition-all" href="/contact">Contacto</a>
+        </div>
+    </div>
+</nav>
+
+<script is:inline>
+document.addEventListener('DOMContentLoaded', () => {
+    const navbar = document.getElementById('main-navbar');
+    let lastScroll = 0;
+    const scrollThreshold = 200; // Ajusta este valor según necesites
+    
+    window.addEventListener('scroll', () => {
+        const currentScroll = window.pageYOffset;
+        
+        if (currentScroll <= scrollThreshold) {
+            // En la parte superior - ocultar
+            navbar.classList.add('-translate-y-full', 'opacity-0');
+            navbar.classList.remove('translate-y-0', 'opacity-100', 'shadow-md');
+        } else if (currentScroll > lastScroll && currentScroll > scrollThreshold) {
+            // Scroll hacia abajo - mostrar
+            navbar.classList.remove('-translate-y-full', 'opacity-0');
+            navbar.classList.add('translate-y-0', 'opacity-100', 'shadow-md');
+        }
+        
+        lastScroll = currentScroll;
+    });
+});
+</script>
+
+<script>
+    import { isSidebarOpen } from "../../lib/stores/sidebarStore";
+
+    // Emitir un evento personalizado al hacer clic en el botón
+    document.getElementById('menuButton')?.addEventListener('click', () => {
+        isSidebarOpen.set(!isSidebarOpen.value)
+        console.log('Se toca ', isSidebarOpen.value)
+    });
+</script>
+<style>
+    nav{
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+    }
+    .profile{
+        background-image: linear-gradient(15deg, #134e5e25 0%, #71B28025 51%, #134e5e30  100%)
+    }
+
+    .profile:hover {
+        background-position: right center; /* change the direction of the change here */
+    }
+</style>

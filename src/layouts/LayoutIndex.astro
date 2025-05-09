@@ -14,12 +14,14 @@ import { ClientRouter } from "astro:transitions";
 		<link rel="icon" type="image/png" href="/icon.png" />
 		<meta name="generator" content={Astro.generator} />
 		<title>Hogar para peludos</title>
-		<ClientRouter />
 	</head>
 	<body class="min-h-screen flex flex-col justify-between relative">
-		<div class="absolute inset-0 bg-gradient-to-br from-[#96f7e4] to-[#76ca99] opacity-10 z-0"></div>
-		<Navbar hide={false}/>
-		<slot />
+		<div class="absolute inset-0 bg-gradient-to-br from-[#96f7e4] to-[#76ca99] opacity-10 h-full z-0"></div>
+		<Navbar hide={true}  />
+
+		<main class="w-full pt-8">
+			<slot />
+		</main>
 		<Footer/>
 	</body>
 </html>

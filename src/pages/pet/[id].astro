@@ -1,0 +1,180 @@
+---
+import type { AdoptionPet } from '~/lib/types/Pet';
+import petsData from '../../lib/json/pets.json';
+import Layout from '../../layouts/Layout.astro';
+import { parsePetAge, parsePetSex, parsePetSize, parsePetType } from '../../lib/helpers/PetHelper';
+
+import Swiper3D from '../../components/atoms/Swiper3D.jsx';
+
+export async function getStaticPaths() {
+  const pets : AdoptionPet[] = petsData.pets.map((pet:any) => ({
+        ...pet,
+        createdAt: new Date(pet.createdAt), // Conversión a Date
+        updatedAt: new Date(pet.updatedAt)  // Conversión a Date
+    }));
+
+  return pets.map(pet => ({
+    params: { 
+      id: pet.id
+    },
+    props: { pet } // Pasa datos adicionales como props
+  }));
+}
+
+const petImages = [
+  '/panda.jpg',
+  '/icon.png',
+  '/panda.jpg',
+  '/icon.png',
+];
+const { pet } = Astro.props; // Accede a los props
+---
+<Layout>
+	<main class="w-full max-w-7xl mt-32 flex flex-col mx-auto text-gray-800 px-4 lg:px-0">
+    <article class="grid grid-cols-1 lg:grid-cols-2 gap-8">
+      <!-- Sección de imagen -->
+      <div class="flex flex-col justify-center">
+        <Swiper3D
+          client:load 
+          images={petImages} 
+          petName={pet.petName} 
+        />
+      </div>
+      <div class="flex flex-col h-full lg:mx-0 gap-2">
+        <div>
+          <h3 class="text-4xl font-semibold">{pet.petName}</h3>
+          <h5 class="font-light text-xs">{
+              pet.createdAt.toLocaleDateString('es-ES', {
+                  weekday: 'long',
+                  year: 'numeric',
+                  month: 'long',
+                  day: 'numeric'
+              })
+          }
+          </h5>
+        </div>
+        <p class="font-medium text-lg">{pet.description}</p>
+        <ul class="flex flex-col sm:flex-wrap sm:flex-row gap-6 mt-4 w-full">
+          <li class="p-4 shadow-md cursor-default rounded-xl bg-[#ffffffa5] backdrop-blur-md flex flex-row items-center gap-4 transition-all duration-300 ease-in-out hover:-translate-y-1 border border-gray-100 hover:shadow-md hover:border-lime-200">
+              
+              <div class="p-3 rounded-lg bg-lime-100/50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-lime-600" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.7 13.5c-1.1-2-1.441-2.5-2.7-2.5s-1.736.755-2.836 2.747c-.942 1.703-2.846 1.845-3.321 3.291c-.097.265-.145.677-.143.962c0 1.176.787 2 1.8 2c1.259 0 3-1 4.5-1s3.241 1 4.5 1c1.013 0 1.8-.823 1.8-2c0-.285-.049-.697-.146-.962c-.475-1.451-2.512-1.835-3.454-3.538m5.488-5.418A1 1 0 0 0 19.782 8h-.015c-.735.012-1.56.75-1.993 1.866c-.519 1.335-.28 2.7.538 3.052q.196.082.406.082c.739 0 1.575-.742 2.011-1.866c.516-1.335.273-2.7-.54-3.052zM9.474 9c.055 0 .109 0 .163-.011c.944-.128 1.533-1.346 1.32-2.722C10.754 4.97 9.91 4 9.025 4c-.055 0-.109 0-.163.011c-.944.128-1.533 1.346-1.32 2.722C7.746 8.026 8.59 9 9.475 9zm6.982-2.267c.214-1.376-.375-2.594-1.32-2.722A1 1 0 0 0 14.974 4c-.885 0-1.728.97-1.93 2.267c-.214 1.376.375 2.594 1.32 2.722q.081.01.162.011c.885 0 1.73-.974 1.93-2.267M5.69 12.918c.816-.352 1.054-1.719.536-3.052C5.79 8.742 4.955 8 4.217 8q-.211 0-.407.082c-.816.352-1.054 1.719-.536 3.052C3.71 12.258 4.545 13 5.283 13q.211 0 .407-.082"/></svg>
+              </div>
+              <div class="flex flex-col">
+                  <div class="text-xs font-extralight">Especie</div>
+                  <div class="text-xl font-semibold">{ parsePetType(pet.petType) }</div>
+              </div>
+          </li>
+          <li class="p-4 shadow-md cursor-default rounded-xl bg-[#ffffffa5] backdrop-blur-md flex flex-row items-center gap-4 transition-all duration-300 ease-in-out hover:-translate-y-1 border border-gray-100 hover:shadow-md hover:border-violet-200">
+              <div class="p-3 rounded-lg bg-violet-100/50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-violet-600" viewBox="0 0 24 24">
+                    <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18.372 5.043a5.5 5.5 0 0 1-2.94 7.063a5.5 5.5 0 0 1-7.063-2.94a5.5 5.5 0 0 1 2.94-7.063a5.5 5.5 0 0 1 7.063 2.94M10.5 7.5L7 11m10 6.5a5.5 5.5 0 0 1-2.94 7.063a5.5 5.5 0 0 1-7.063-2.94a5.5 5.5 0 0 1 2.94-7.063a5.5 5.5 0 0 1 7.063 2.94M13.5 16.5L17 13"/>
+                </svg>
+              </div>
+              <div class="flex flex-col">
+                  <div class="text-xs font-extralight">Raza</div>
+                  <div class="text-xl font-semibold">{pet.breed || 'Sin especificar'}</div>
+              </div>
+          </li>
+          <li class:list={"p-4 shadow-md cursor-default rounded-xl bg-[#ffffffa5] backdrop-blur-md flex flex-row items-center gap-4 transition-all duration-300 ease-in-out hover:-translate-y-1 border border-gray-100 hover:shadow-md " +(pet.sex == 'male'? 'hover:border-blue-200' : 'hover:border-pink-200' ) }>
+            <div class="p-3 rounded-lg bg-blue-100/50"
+              class:list={"p-3 rounded-lg " + (pet.sex == 'male'? 'bg-blue-100/50' : 'bg-pink-100/50' )}>
+                {pet.sex == 'male' ? 
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-blue-600" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 14a5 5 0 1 0 10 0a5 5 0 1 0-10 0m14-9l-5.4 5.4M19 5h-5m5 0v5"/></svg>
+                :
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-pink-600" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 9a5 5 0 1 0 10 0A5 5 0 1 0 7 9m5 5v7m-3-3h6"/></svg>
+                }
+            </div>
+            <div class="flex flex-col">
+                <div class="text-xs font-extralight">Sexo</div>
+                <div class="text-xl font-semibold">{ parsePetSex(pet.sex) }</div>
+            </div>
+          </li>
+          <li class="p-4 shadow-md cursor-default rounded-xl bg-[#ffffffa5] backdrop-blur-md flex flex-row items-center gap-4 transition-all duration-300 ease-in-out hover:-translate-y-1 border border-gray-100 hover:shadow-md hover:border-amber-200">
+            <div class="p-3 rounded-lg bg-amber-100/50">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-amber-600" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19.875c0 .621-.512 1.125-1.143 1.125H5.143A1.134 1.134 0 0 1 4 19.875V4a1 1 0 0 1 1-1h5.857C11.488 3 12 3.504 12 4.125zM12 9h-2m2-3H9m3 6H9m3 6H9m3-3h-2M21 3h-4m2 0v18m2 0h-4"/></svg>
+          </div>
+            <div class="flex flex-col">
+                <div class="text-xs font-extralight">Tamaño</div>
+                <div class="text-xl font-semibold">{ parsePetSize(pet.size) }</div>
+            </div>  
+          </li>
+          <li class="p-4 shadow-md cursor-default rounded-xl bg-[#ffffffa5] backdrop-blur-md flex flex-row items-center gap-4 transition-all duration-300 ease-in-out hover:-translate-y-1 border border-gray-100 hover:shadow-md hover:border-teal-200">
+              
+              <div class="p-3 rounded-lg bg-teal-100/50">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-teal-600" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2zm12-4v4M8 3v4m-4 4h16m-9 4h1m0 0v3"/></svg>
+              </div>
+              <div class="flex flex-col">
+                  <div class="text-xs font-extralight">Edad</div>
+                  <div class="text-xl font-semibold">{ parsePetAge(pet.age) }</div>
+              </div> 
+          </li>
+          <li class="p-4 shadow-md cursor-default rounded-xl bg-[#ffffffa5] backdrop-blur-md flex flex-row items-center gap-4 transition-all duration-300 ease-in-out hover:-translate-y-1 border border-gray-100 hover:shadow-md hover:border-sky-200">
+            <div class="p-3 rounded-lg bg-sky-100/50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-sky-600" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18.5L9 17l-6 3V7l6-3l6 3l6-3v7.5M9 4v13m6-10v5.5m6.121 7.621a3 3 0 1 0-4.242 0Q17.506 20.749 19 22q1.577-1.335 2.121-1.879M19 18v.01"/></svg>
+            </div>
+              <div class="flex flex-col">
+                  <div class="text-xs font-extralight">Ubicación</div>
+                  <div class="text-xl font-semibold">{pet.address}, { pet.province }</div>
+              </div>  
+          </li>
+          <!-- <li class="p-4 shadow-md cursor-default rounded-xl w-full bg-[#ffffffa5] backdrop-blur-md flex flex-row items-center gap-4 transition-all duration-300 ease-in-out hover:-translate-y-1 border border-gray-100 hover:shadow-md hover:border-indigo-200">
+            <div class="p-3 rounded-lg bg-indigo-100/50">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-indigo-600" viewBox="0 0 24 24"><path fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 4h4l2 5l-2.5 1.5a11 11 0 0 0 5 5L15 13l5 2v4a2 2 0 0 1-2 2A16 16 0 0 1 3 6a2 2 0 0 1 2-2"/></svg>
+            </div>
+            <div class="flex flex-col gap-1">
+                <div class="text-xs font-extralight">Contacto</div>
+                <a href={`mailto:${pet.ownerEmail}`} class="text-sm font-medium hover:text-indigo-600">{pet.ownerEmail}</a>
+                <a href={`tel:${pet.ownerPhone}`} class="text-sm font-medium hover:text-indigo-600">{pet.ownerPhone}</a>
+            </div>
+          </li> -->
+          
+        </ul>
+        <div class="mt-6 p-4 bg-[#ffffffa5] rounded-xl border border-indigo-200">
+          <h4 class="font-bold text-lg text-indigo-800 mb-3 flex items-center gap-2">
+            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2a19.79 19.79 0 0 1-8.63-3.07a19.5 19.5 0 0 1-6-6a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72a12.84 12.84 0 0 0 .7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45a12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+            </svg>
+            Contacto
+          </h4>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+            <a href={`tel:${pet.ownerPhone}`} class="flex items-center gap-3 p-3 bg-white rounded-lg hover:bg-indigo-100 transition-colors">
+              <div class="p-2 bg-indigo-100 rounded-full">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                  <path d="M22 16.92v3a2 2 0 0 1-2.18 2a19.79 19.79 0 0 1-8.63-3.07a19.5 19.5 0 0 1-6-6a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72a12.84 12.84 0 0 0 .7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45a12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/>
+                </svg>
+              </div>
+              <div>
+                <div class="text-xs text-gray-500">Teléfono</div>
+                <div class="font-semibold text-gray-800">{pet.ownerPhone}</div>
+              </div>
+            </a>
+            {
+              pet.ownerEmail &&
+              <a href={`mailto:${pet.ownerEmail}`} class="flex items-center gap-3 p-3 bg-white rounded-lg hover:bg-indigo-100 transition-colors">
+                <div class="p-2 bg-indigo-100 rounded-full">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-indigo-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><path d="m22 6l-10 7L2 6"/>
+                  </svg>
+                </div>
+                <div>
+                  <div class="text-xs text-gray-500">Correo</div>
+                  <div class="font-semibold text-sm text-gray-800">{pet.ownerEmail}</div>
+                </div>
+              </a>
+            }
+          </div>
+        </div>
+      <div class="lg:col-span-2 pt-6 mt-6 border-t border-gray-200">
+        <div class="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+            <p class="text-sm text-gray-500">Publicado por: <span class="font-medium text-gray-700">{pet.ownerName}</span></p>
+        </div>
+      </div>
+        
+    </article>
+  </div>
+  </main>
+</Layout>
+
+<style>
+</style>

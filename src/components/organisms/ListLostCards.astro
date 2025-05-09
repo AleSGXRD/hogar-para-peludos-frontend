@@ -1,0 +1,17 @@
+---
+import type { Pet } from '~/lib/types/Pet'
+import FilterList from '../molecules/FilterList.tsx'
+
+export interface Props {
+  list: Pet[]
+  searchTerm?: string
+}
+
+export interface Props {
+  list: Pet[]
+}
+
+const { list } = Astro.props
+---
+
+<FilterList list={list} client:load />

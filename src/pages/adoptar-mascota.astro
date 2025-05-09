@@ -1,0 +1,19 @@
+---
+import ListAdoptionCards from '../components/organisms/ListAdoptionCards.astro';
+import Layout from '../layouts/Layout.astro';
+
+import type { AdoptionPet } from '~/lib/types/Pet';
+import pets from '../lib/json/pets.json';
+
+const listPetsAdoption: AdoptionPet[] = pets.pets.map(pet => ({
+  ...pet,
+  createdAt: new Date(pet.createdAt),
+  updatedAt: new Date(pet.updatedAt)
+})) as AdoptionPet[]; // Type assertion
+---
+
+<Layout>
+	<main class="w-full max-w-7xl mt-32 flex flex-col mx-auto">
+		<ListAdoptionCards list={listPetsAdoption}/>
+	</main>
+</Layout>
