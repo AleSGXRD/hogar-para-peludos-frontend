@@ -13,10 +13,11 @@ import { ClientRouter } from "astro:transitions";
 		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
 		<link rel="icon" type="image/png" href="/icon.png" />
 		<meta name="generator" content={Astro.generator} />
+		<meta name="color-scheme" content="light">
 		<title>Hogar para peludos</title>
 		<ClientRouter />
 	</head>
-	<body class="min-h-screen flex flex-col justify-between relative">
+	<body class="min-h-screen flex flex-col justify-between relative light">
 		<div class="absolute bg-gradient-to-br from-[#96f7e4] to-[#76ca99] opacity-10 z-0"></div>
 		<Navbar hide={false}/>
 		<slot />
