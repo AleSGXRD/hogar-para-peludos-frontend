@@ -29,7 +29,7 @@ const { pet } = Astro.props;
     <article class="grid grid-cols-1 lg:grid-cols-2 gap-8">
       <!-- Sección de imagen con alerta -->
       <!-- Sección de imagen -->
-      <div class="lg:flex flex-col justify-center hidden">
+      <div class="lg:flex flex-col justify-center hidden relative">
         <div class="absolute top-4 left-4 z-10 bg-red-600 text-white px-4 py-2 rounded-lg shadow-lg font-bold">
           ¡MASCOTA PERDIDA!
         </div>
@@ -39,7 +39,7 @@ const { pet } = Astro.props;
           petName={pet.petName} 
         />
       </div>
-      <div class="lg:hidden flex-col justify-center flex">
+      <div class="lg:hidden flex-col justify-center flex relative">
         <div class="absolute top-4 left-4 z-10 bg-red-600 text-white px-4 py-2 rounded-lg shadow-lg font-bold">
           ¡MASCOTA PERDIDA!
         </div>

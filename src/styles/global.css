@@ -29,4 +29,16 @@ font-size: 1.2rem !important;
 }
 .animate-spin {
   animation: spin 1s linear infinite;
+}/* Cambia el color de los puntos de paginación */
+.swiper-pagination-bullet {
+  background-color: #3b6a4f !important; /* Este es el código HEX para teal-500 */
+  opacity: 0.8 !important;
+  width: 10px !important;
+  height: 10px !important;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #76ca99 !important; /* teal-500 */
+  opacity: 1 !important;
+  transform: scale(1.2) !important;
 }

@@ -20,16 +20,26 @@ const ResponsiveSwiper = ({ images, petName }) => {
           style={{ width: '100%', maxWidth: '100%' }}
         >
           {images.map((img, index) => (
-            <SwiperSlide key={index}>
+            <SwiperSlide 
+              key={index}
+              style={{
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: 'auto',
+                minHeight: '300px' // Altura mínima para evitar colapso
+              }}
+            >
               <img 
                 src={img} 
                 alt={`${petName} - Foto ${index + 1}`}
                 style={{
                   width: '100%',
                   height: 'auto',
-                  maxHeight: '300px',
-                  objectFit: 'cover',
-                  borderRadius: '8px'
+                  maxHeight: '500px',
+                  objectFit: 'contain', // Cambiado de 'cover' a 'contain'
+                  borderRadius: '8px',
+                  display: 'block' // Asegura que no haya espacio extra
                 }}
               />
             </SwiperSlide>
