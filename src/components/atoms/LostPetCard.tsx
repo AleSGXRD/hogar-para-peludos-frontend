@@ -27,7 +27,7 @@ export default function LostPetCard({ pet }: Props) {
             width={400}
             height={400}
             // src={pet.imageUrl ?? 'https://ptqxhogmwecyueleyhbn.supabase.co/storage/v1/object/public/hogar-para-peludos/adopcion/prueba%20img.jpg'}
-            src='https://ptqxhogmwecyueleyhbn.supabase.co/storage/v1/object/public/hogar-para-peludos/adopcion/prueba%20img.jpg'
+            src='/panda.jpg'
           />
           <div className="absolute inset-0 bg-red-900/10"></div>
         </div>

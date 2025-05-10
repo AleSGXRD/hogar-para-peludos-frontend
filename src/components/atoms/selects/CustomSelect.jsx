@@ -28,7 +28,7 @@ export const CustomSelect = ({ options, value, onChange, placeholder, icons = {}
         type="button"
         onClick={() => setIsOpen(!isOpen)}
         className={`flex items-center justify-between w-full cursor-pointer px-4 py-2 text-left bg-gray-50 border border-gray-200 rounded-lg shadow-md transition-all duration-200 ${
-          isOpen ? 'ring-2 ring-teal-200 border-teal-300' : 'hover:border-gray-300'
+          isOpen ? 'ring-2 ring-[#76ca99] border-[#76ca99]' : 'hover:border-gray-300'
         }`}
       >
         <div className="flex items-center">
@@ -58,8 +58,8 @@ export const CustomSelect = ({ options, value, onChange, placeholder, icons = {}
             <li
               key="empty"
               onClick={() => handleSelect('')}
-              className={`px-4 py-2 cursor-pointer hover:bg-teal-50 ${
-                value === '' ? 'bg-teal-100' : ''
+              className={`px-4 py-2 cursor-pointer hover:bg-[#b8edce] ${
+                value === '' ? 'bg-[#76ca99]' : ''
               }`}
             >
               {placeholder}
@@ -68,8 +68,8 @@ export const CustomSelect = ({ options, value, onChange, placeholder, icons = {}
               <li
                 key={option.value}
                 onClick={() => handleSelect(option.value)}
-                className={`flex items-center px-4 py-2 cursor-pointer hover:bg-teal-50 ${
-                  value === option.value ? 'bg-teal-100' : ''
+                className={`flex items-center px-4 py-2 cursor-pointer hover:bg-[#b8edce] ${
+                  value === option.value ? 'bg-[#76ca99]' : ''
                 }`}
               >
                 {icons[option.value] && (

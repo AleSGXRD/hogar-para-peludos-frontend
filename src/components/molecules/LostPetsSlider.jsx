@@ -81,7 +81,7 @@ export default function LostPetsSlider({ pets }) {
                     {/* Imagen */}
                     <div className="relative aspect-video h-full overflow-hidden">
                       <img
-                        src={pet.image || "https://ptqxhogmwecyueleyhbn.supabase.co/storage/v1/object/public/hogar-para-peludos/adopcion/prueba%20img.jpg"}
+                        src={pet.image || "/panda.jpg"}
                         alt={pet.petName}
                         className="w-full  object-cover transition-transform duration-500 hover:scale-105"
                         loading="lazy"

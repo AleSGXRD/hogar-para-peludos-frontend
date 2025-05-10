@@ -103,7 +103,7 @@ export default function PetGrid({ pets }: Props) {
             <button
               onClick={() => handlePageChange(currentPage - 1)}
               disabled={currentPage === 1}
-              className="p-2 rounded-full bg-gray-50 hover:bg-teal-50 hover:text-teal-700 text-gray-800 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+              className="p-2 rounded-full bg-gray-50 hover:bg-[#c9f8dc] hover:text-[#76ca99] text-gray-800 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
               aria-label="Página anterior"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" viewBox="0 0 24 24">
@@ -119,9 +119,9 @@ export default function PetGrid({ pets }: Props) {
                   onClick={() => typeof page === 'number' && handlePageChange(page)}
                   className={`w-10 h-10 rounded-full flex items-center justify-center transition-all cursor-pointer ${
                     page === currentPage
-                      ? 'bg-[#96f7e479]  shadow-md text-gray-800'
+                      ? 'bg-[#76ca99]  shadow-md text-gray-800'
                       : typeof page === 'number'
-                        ? 'bg-[#f9fafb] hover:bg-teal-50 hover:text-teal-700 text-gray-800'
+                        ? 'bg-[#f9fafb] hover:bg-[#c9f8dc] hover:text-[#76ca99] text-gray-800'
                         : 'cursor-default'
                   }`}
                   disabled={page === '...' || page === currentPage}
@@ -136,7 +136,7 @@ export default function PetGrid({ pets }: Props) {
             <button
               onClick={() => handlePageChange(currentPage + 1)}
               disabled={currentPage === totalPages}
-              className="p-2 rounded-full bg-gray-50 hover:bg-teal-50 hover:text-teal-700 text-gray-800 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
+              className="p-2 rounded-full bg-gray-50 hover:bg-[#c9f8dc] hover:text-[#76ca99] text-gray-800 transition-all cursor-pointer disabled:opacity-50 disabled:cursor-not-allowed"
               aria-label="Página siguiente"
             >
               <svg xmlns="http://www.w3.org/2000/svg" className="w-6 h-6" viewBox="0 0 24 24">
