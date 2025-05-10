@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation, Autoplay } from 'swiper/modules';
 import 'swiper/css';
@@ -8,6 +8,17 @@ import { parsePetType, parsePetAge } from '../../lib/helpers/PetHelper';
 export default function LostPetsSlider({ pets }) {
   const navigationPrevRef = useRef(null);
   const navigationNextRef = useRef(null);
+  const swiperRef = useRef(null);
+
+  // Asegurar que los elementos de navegación estén disponibles
+  useEffect(() => {
+    if (swiperRef.current && swiperRef.current.swiper) {
+      swiperRef.current.swiper.params.navigation.prevEl = navigationPrevRef.current;
+      swiperRef.current.swiper.params.navigation.nextEl = navigationNextRef.current;
+      swiperRef.current.swiper.navigation.init();
+      swiperRef.current.swiper.navigation.update();
+    }
+  }, [pets]); // Dependencia de pets para recalcular si cambian
 
   return (
     <section className="relative py-16 bg-gradient-to-b from-white to-[#f7fdfb]">
@@ -31,8 +42,9 @@ export default function LostPetsSlider({ pets }) {
         </div>
 
         {pets.length > 0 ? (
-          <div className="relative px-8">
+          <div className="relative px-2 md:px-8">
             <Swiper
+              ref={swiperRef}
               modules={[Navigation, Autoplay]}
               spaceBetween={24}
               slidesPerView={1}
@@ -53,6 +65,8 @@ export default function LostPetsSlider({ pets }) {
               onBeforeInit={(swiper) => {
                 swiper.params.navigation.prevEl = navigationPrevRef.current;
                 swiper.params.navigation.nextEl = navigationNextRef.current;
+                swiper.navigation.init();
+                swiper.navigation.update();
               }}
               autoplay={{
                 delay: 5000,

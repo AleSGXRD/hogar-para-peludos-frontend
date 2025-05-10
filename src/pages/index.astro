@@ -65,7 +65,67 @@ const recentLostPets = await getRecentLostPets(6);
     
     <!-- Sección de mascotas perdidas -->
     <LostPetsSlider pets={recentLostPets} client:load />
+    <!-- Sección de Adopción Minimalista --><!-- Sección de Adopción Mejorada -->
+    <section class="py-20 relative">
+      <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <!-- Encabezado con icono -->
+        <div class="text-center mb-16">
+          <h2 class="text-4xl md:text-5xl font-bold text-gray-800 mb-4">
+            Conectamos <span class="text-[#76ca99]">peludos</span> con hogares
+          </h2>
+          <p class="text-xl text-gray-600 max-w-2xl mx-auto">
+            Una red comunitaria donde cada adopción cuenta
+          </p>
+        </div>
 
+        <!-- Tarjetas visuales con iconos SVG -->
+        <div class="grid md:grid-cols-3 gap-8 mb-16">
+          <!-- Tarjeta 1 -->
+          <div class="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-sm hover:shadow-md transition-all text-center border-t-4 border-[#76ca99]">
+            <div class="text-[#76ca99] mb-4 flex justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path>
+                <circle cx="9" cy="7" r="4"></circle>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"></path>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">Comunidad</h3>
+            <p class="text-gray-600">Personas ayudando mascotas en toda la región</p>
+          </div>
+
+          <!-- Tarjeta 2 -->
+          <div class="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-sm hover:shadow-md transition-all text-center border-t-4 border-[#76ca99]">
+            <div class="text-[#76ca99] mb-4 flex justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path>
+                <polyline points="9 22 9 12 15 12 15 22"></polyline>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">Hogares temporales</h3>
+            <p class="text-gray-600">Voluntarios cuidando peludos hasta su adopción</p>
+          </div>
+
+          <!-- Tarjeta 3 -->
+          <div class="bg-white/80 backdrop-blur-sm p-8 rounded-2xl shadow-sm hover:shadow-md transition-all text-center border-t-4 border-[#76ca99]">
+            <div class="text-[#76ca99] mb-4 flex justify-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"></path>
+              </svg>
+            </div>
+            <h3 class="text-xl font-bold text-gray-800 mb-3">Adopciones</h3>
+            <p class="text-gray-600">Familias encontrando a su compañero ideal</p>
+          </div>
+        </div>
+
+        <!-- CTA destacado -->
+        <div class="text-center">
+          <a href="/adoptar-mascota" class="px-8 py-3 bg-[#76ca99] text-white font-medium rounded-lg shadow-md hover:bg-[#5cb487] transition-all transform hover:-translate-y-1">
+            Ver peludos disponibles
+          </a>
+        </div>
+      </div>
+    </section>
     <!-- Sección de Contacto - Añadir después del LostPetsSlider -->
     <Contact></Contact>
     {/* Ola decorativa inferior */}

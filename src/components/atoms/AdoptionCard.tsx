@@ -21,7 +21,8 @@ export default function AdoptionCard({ pet }: Props) {
             loading="lazy"
             width={400}
             height={400}
-            src={pet.imageUrl ?? 'https://ptqxhogmwecyueleyhbn.supabase.co/storage/v1/object/public/hogar-para-peludos/adopcion/prueba%20img.jpg'}
+            // src={pet.imageUrl ?? 'https://ptqxhogmwecyueleyhbn.supabase.co/storage/v1/object/public/hogar-para-peludos/adopcion/prueba%20img.jpg'}
+            src='https://ptqxhogmwecyueleyhbn.supabase.co/storage/v1/object/public/hogar-para-peludos/adopcion/prueba%20img.jpg'
           />
         </div>
 

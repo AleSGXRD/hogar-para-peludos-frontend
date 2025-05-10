@@ -1,0 +1,77 @@
+---
+// src/pages/terminos-condiciones.astro
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout title="Términos y Condiciones | Hogar para Peludos">
+  <main class="pt-32 ">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <!-- Encabezado -->
+      <div class="text-center mb-12">
+        <h1 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">
+          <span class="text-[#76ca99]">Términos</span> y Condiciones
+        </h1>
+        <p class="text-gray-600">Última actualización: {new Date().toLocaleDateString('es-ES', { year: 'numeric', month: 'long', day: 'numeric' })}</p>
+      </div>
+
+      <!-- Contenido -->
+      <div class="prose prose-lg max-w-none text-gray-600">
+        <!-- 1. Introducción -->
+        <section class="mb-8">
+          <h2 class="text-2xl font-bold text-gray-800 mb-4">1. Introducción</h2>
+          <p>Bienvenido/a a Hogar para Peludos. Estos términos y condiciones rigen el uso de nuestra plataforma de adopción de mascotas y los servicios relacionados.</p>
+        </section>
+
+        <!-- 2. Aceptación de términos -->
+        <section class="mb-8">
+          <h2 class="text-2xl font-bold text-gray-800 mb-4">2. Aceptación de los Términos</h2>
+          <p>Al utilizar nuestro sitio web, usted acepta cumplir con estos términos y condiciones. Si no está de acuerdo, por favor absténgase de usar nuestros servicios.</p>
+        </section>
+
+        <!-- 3. Uso de la plataforma -->
+        <section class="mb-8">
+          <h2 class="text-2xl font-bold text-gray-800 mb-4">3. Uso de la Plataforma</h2>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>Debe ser mayor de 18 años para publicar mascotas o solicitar adopciones</li>
+            <li>Se prohíbe el uso comercial sin autorización</li>
+            <li>Es responsable de la veracidad de la información proporcionada</li>
+            <li>Debe tratar a todos los usuarios con respeto</li>
+          </ul>
+        </section>
+
+        <!-- 4. Proceso de adopción -->
+        <section class="mb-8">
+          <h2 class="text-2xl font-bold text-gray-800 mb-4">4. Proceso de Adopción</h2>
+          <p>Hogar para Peludos actúa como intermediario entre adoptantes y protectores de animales. No nos hacemos responsables por:</p>
+          <ul class="list-disc pl-6 space-y-2">
+            <li>La salud o comportamiento de las mascotas después de la adopción</li>
+            <li>Acuerdos entre particulares</li>
+            <li>Información inexacta proporcionada por los usuarios</li>
+          </ul>
+        </section>
+
+        <!-- 5. Privacidad -->
+        <section class="mb-8">
+          <h2 class="text-2xl font-bold text-gray-800 mb-4">5. Privacidad</h2>
+          <p>Su uso del sitio web está sujeto a nuestra <a href="/politica-privacidad" class="text-[#76ca99] hover:underline">Política de Privacidad</a>.</p>
+        </section>
+
+        <!-- 6. Modificaciones -->
+        <section class="mb-8">
+          <h2 class="text-2xl font-bold text-gray-800 mb-4">6. Modificaciones</h2>
+          <p>Nos reservamos el derecho de modificar estos términos en cualquier momento. Las versiones actualizadas se publicarán en esta página.</p>
+        </section>
+
+        <!-- 7. Contacto -->
+        <section class="mb-8">
+          <h2 class="text-2xl font-bold text-gray-800 mb-4">7. Contacto</h2>
+          <p>Para preguntas sobre estos términos, contáctenos a través de <a href="mailto:legal@hogarparapeludos.com" class="text-[#76ca99] hover:underline">legal@hogarparapeludos.com</a>.</p>
+        </section>
+
+        <div class="bg-[#f7fdfb] p-6 rounded-lg border border-[#76ca99]/20 mt-12">
+          <p class="font-medium text-gray-800">Al usar nuestro sitio, usted reconoce haber leído, entendido y aceptado estos Términos y Condiciones.</p>
+        </div>
+      </div>
+    </div>
+  </main>
+</Layout>
