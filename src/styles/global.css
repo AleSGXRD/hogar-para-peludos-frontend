@@ -8,6 +8,12 @@ body {
     background-attachment: fixed;
     font-family: Arial, sans-serif;
 }
+input, select, textarea {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  border-radius: 0;
+}
 
 .swiper-button-next, 
 .swiper-button-prev {
