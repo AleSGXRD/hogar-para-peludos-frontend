@@ -12,7 +12,10 @@ const listPetsLost: LostPet[] = pets.pets.map(pet => ({
 })) as LostPet[]; // Type assertion aquí
 ---
 
-<Layout>
+<Layout 
+    title="Mascota perdida - Hogar para Peludos"
+    description="Ayudanos a encontrar nuestras mascotas perdidas."
+    image="/icon.png">
 	<main class="w-full max-w-7xl mt-32 flex flex-col mx-auto">
 		<ListAdoptionCards list={listPetsLost}/>
 	</main>

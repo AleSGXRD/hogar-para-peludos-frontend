@@ -12,7 +12,10 @@ const listPetsAdoption: AdoptionPet[] = pets.pets.map(pet => ({
 })) as AdoptionPet[]; // Type assertion
 ---
 
-<Layout>
+<Layout 
+  title="Adopta una Mascota - Hogar para Peludos"
+  description="Encuentra mascotas en adopción. Dales una segunda oportunidad y un hogar lleno de amor."
+  image="/icon.png">
 	<main class="w-full max-w-7xl mt-32 flex flex-col mx-auto">
 		<ListAdoptionCards list={listPetsAdoption}/>
 	</main>

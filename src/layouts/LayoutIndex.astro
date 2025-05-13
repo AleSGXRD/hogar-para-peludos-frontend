@@ -16,10 +16,8 @@ const {
 	title = "Hogar para Peludos - Adopción de Mascotas",
 	description = "Encuentra tu compañero perfecto en Hogar para Peludos. Adopta mascotas rescatadas y dale un hogar a quien más lo necesita. Perros y gatos esperando una familia.",
 	image = "/icon-big.png",
-	canonicalURL = new URL(Astro.url.pathname, Astro.site),
 } = Astro.props;
 
-const socialImageURL = new URL(image, Astro.site);
 ---
 
 <!doctype html>
@@ -35,21 +33,18 @@ const socialImageURL = new URL(image, Astro.site);
 		<title>{title}</title>
 		<meta name="title" content={title} />
 		<meta name="description" content={description} />
-		<link rel="canonical" href={canonicalURL} />
 
 		<!-- Open Graph / Facebook -->
 		<meta property="og:type" content="website" />
 		<meta property="og:url" content={Astro.url} />
 		<meta property="og:title" content={title} />
 		<meta property="og:description" content={description} />
-		<meta property="og:image" content={socialImageURL} />
 
 		<!-- Twitter -->
 		<meta property="twitter:card" content="summary_large_image" />
 		<meta property="twitter:url" content={Astro.url} />
 		<meta property="twitter:title" content={title} />
 		<meta property="twitter:description" content={description} />
-		<meta property="twitter:image" content={socialImageURL} />
 
 		<!-- Additional SEO tags -->
 		<meta name="robots" content="index, follow" />
