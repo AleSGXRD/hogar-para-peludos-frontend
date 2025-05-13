@@ -144,7 +144,7 @@ export default function LostPetsSlider({ pets }) {
 
                       <div className="mt-4 pt-4 border-t border-gray-100">
                         <a 
-                          href={`/lost-pet/${pet.id}`}
+                          href={`/mascota-perdida/${pet.id}`}
                           className="w-full inline-flex justify-center items-center px-4 py-2 bg-[#76ca99] text-white rounded-lg hover:bg-[#5cb487] transition-colors text-sm font-medium"
                         >
                           Más información
@@ -176,7 +176,7 @@ export default function LostPetsSlider({ pets }) {
 
         <div className="text-center mt-8">
           <a 
-            href="/lost-pets" 
+            href="/mascota-perdida" 
             className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-[#76ca99] hover:bg-[#5cb487] transition-colors"
           >
             Ver todas las mascotas perdidas

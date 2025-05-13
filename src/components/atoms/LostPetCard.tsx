@@ -8,7 +8,7 @@ interface Props {
 export default function LostPetCard({ pet }: Props) {
   return (
     <a
-      href={`/lost-pet/${pet.id}`}
+      href={`/mascota-perdida/${pet.id}`}
       className="group block h-full transition-all hover:scale-[1.02] active:scale-[0.98] relative"
     >
       {/* Ribbon de "Perdido" */}

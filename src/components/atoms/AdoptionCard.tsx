@@ -8,7 +8,7 @@ interface Props {
 export default function AdoptionCard({ pet }: Props) {
   return (
     <a
-      href={`/pet/${pet.id}`}
+      href={`/mascota/${pet.id}`}
       className="group block h-full transition-all hover:scale-[1.02] active:scale-[0.98] relative"
     >
       <div className="h-full rounded-xl  hover:shadow-lg transition-all bg-transparent hover:bg-gray-100  overflow-hidden hover:border border-gray-100 flex flex-col">
