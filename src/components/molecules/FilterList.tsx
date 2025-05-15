@@ -21,7 +21,7 @@ export default function FilterList({ list }: Props) {
     )
 
     const matchesCity = cityFilter ? pet.province?.toLowerCase() === cityFilter.toLowerCase() : true
-    const matchesSex = sexFilter ? pet.sex?.toLowerCase() === sexFilter.toLowerCase() : true
+    const matchesSex = sexFilter ? pet.sex?.toLowerCase() === sexFilter.toLowerCase() || pet.sex == 'mixed' : true
 
     return matchesSearch && matchesCity && matchesSex
   })

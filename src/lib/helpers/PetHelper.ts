@@ -17,7 +17,7 @@ export function parsePetType(value : string){
     }
 }
 export function parsePetAge(age : number){
-    if(age <= 1){
+    if(age == 1){
         return 1+" Año";
     }
     else{

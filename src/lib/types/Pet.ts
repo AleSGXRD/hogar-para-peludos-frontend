@@ -12,6 +12,7 @@ interface BasePet {
     weight?: number; // Opcional ya que no siempre se conoce
     breed: string;
     imageUrl: string;
+    pictures: string[];
     createdAt: Date;
     updatedAt: Date;
 }

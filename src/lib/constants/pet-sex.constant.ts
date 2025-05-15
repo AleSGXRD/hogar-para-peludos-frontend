@@ -6,5 +6,9 @@ export const PET_SEX =[
     {
         value:'male',
         label:"Macho",
+    },
+    {
+        value:'mixed',
+        label:"Ambos",
     }
 ]

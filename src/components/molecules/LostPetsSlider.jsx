@@ -169,7 +169,7 @@ export default function LostPetsSlider({ pets }) {
             </div>
           </div>
         ) : (
-          <div className="text-center py-12 bg-white rounded-lg shadow-sm border border-gray-100">
+          <div className="text-center py-12  rounded-lg shadow-sm border border-gray-100">
             <p className="text-gray-500">No hay mascotas perdidas reportadas recientemente</p>
           </div>
         )}
