@@ -22,14 +22,14 @@
       ],
       "contactPhone": "+53511223344",
       "lostDate": "2025-05-15T00:00:00Z",
-      "lastSeenLocation": "cerca del Parque Central (La Habana)",
+      "lastSeenLocation": "Parque Central (La Habana)",
       "distinctiveFeatures": [
         "Collar azul con placa de identificación",
         "Mancha blanca en la pata derecha"
       ],
       "isMicrochipped": true,
-      "createdAt": "2025-05-16T00:00:00Z",
-      "updatedAt": "2025-05-16T00:00:00Z"
+      "createdAt": "2025-05-15T00:00:00Z",
+      "updatedAt": "2025-05-15T00:00:00Z"
     }
   ]
 }
