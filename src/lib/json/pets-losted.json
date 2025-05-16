@@ -1,4 +1,35 @@
 {
   "pets": [
+    {
+      "id": "LP001",
+      "reportType": "lost",
+      "status": "missing",
+      "petName": "Max",
+      "description": "Labrador mix color marrón, 15 kg, con collar azul y placa de identificación. Tiene una mancha blanca en la pata derecha. Es tímido pero no agresivo. Responde al nombre 'Max'. Microchip implantado. Se perdió corriendo tras unos fuegos artificiales.",
+      "petType": "dog",
+      "province": "La Habana",
+      "address": "Calle Prado, 12",
+      "age": 4,
+      "sex": "male",
+      "size": "medium",
+      "weight": 12,
+      "breed": "Golden Retriever",
+      "imageUrl": "https://ptqxhogmwecyueleyhbn.supabase.co/storage/v1/object/public/hogar-para-peludos/adopcion/2025-05-15%2018.23.55.jpg",
+      "pictures": [
+        "https://ptqxhogmwecyueleyhbn.supabase.co/storage/v1/object/public/hogar-para-peludos/adopcion/2025-05-15%2018.23.55.jpg",
+        "https://ptqxhogmwecyueleyhbn.supabase.co/storage/v1/object/public/hogar-para-peludos/adopcion/2025-05-15%2018.24.04.jpg",
+        "https://ptqxhogmwecyueleyhbn.supabase.co/storage/v1/object/public/hogar-para-peludos/adopcion/2025-05-15%2018.24.15.jpg"
+      ],
+      "contactPhone": "+53511223344",
+      "lostDate": "2025-05-15T00:00:00Z",
+      "lastSeenLocation": "cerca del Parque Central (La Habana)",
+      "distinctiveFeatures": [
+        "Collar azul con placa de identificación",
+        "Mancha blanca en la pata derecha"
+      ],
+      "isMicrochipped": true,
+      "createdAt": "2025-05-16T00:00:00Z",
+      "updatedAt": "2025-05-16T00:00:00Z"
+    }
   ]
 }
