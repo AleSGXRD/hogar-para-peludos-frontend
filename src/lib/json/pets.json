@@ -1,6 +1,35 @@
 {
   "pets": [
     {
+      "id": "AD007",
+      "reportType": "adoption",
+      "status": "available",
+      "petName": "Luna",
+      "description": "Luna es una gata cariñosa y tranquila, ideal para un hogar calmado. Está esterilizada, vacunada y desparasitada. Tiene pelaje atigrado gris con rayas negras y ojos verdes brillantes. Le gusta dormir en lugares altos y es muy limpia. No convive bien con perros, pero se lleva bien con otros gatos. ¡Busca un hogar definitivo donde la consientan!",
+      "petType": "cat",
+      "province": "La Habana",
+      "address": "Vedado, Calle 23",
+      "age": 1,
+      "sex": "female",
+      "size": "small",
+      "weight": 3.5,
+      "breed": "Mestiza",
+      "imageUrl": "https://ptqxhogmwecyueleyhbn.supabase.co/storage/v1/object/public/hogar-para-peludos/adopcion/2025-05-15%2018.24.15.jpg",
+      "pictures": [
+        "https://ptqxhogmwecyueleyhbn.supabase.co/storage/v1/object/public/hogar-para-peludos/adopcion/2025-05-15%2018.24.21.jpg",
+        "https://ptqxhogmwecyueleyhbn.supabase.co/storage/v1/object/public/hogar-para-peludos/adopcion/2025-05-15%2018.24.09.jpg"
+      ],
+      "ownerName": "Carlos Martínez",
+      "ownerEmail": "carlos.martinez@example.com",
+      "ownerPhone": "+53 555443322",
+      "createdByEmail": "",
+      "vaccinationStatus": true,
+      "sterilizationStatus": true,
+      "personalityTraits": ["cariñosa", "tranquila", "limpia"],
+      "createdAt": "2025-05-16T00:00:00Z",
+      "updatedAt": "2025-05-16T00:00:00Z"
+    },
+    {
       "id": "AD006",
       "reportType": "adoption",
       "status": "available",
