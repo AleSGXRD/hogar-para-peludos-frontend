@@ -95,6 +95,7 @@
       "weight": 5,
       "breed": "Chihuahua",
       "imageUrl": "https://example.com/images/bella.jpg",
+      "pictures":[],
       "contactName": "María González",
       "contactPhone": "+53577665544",
       "contactEmail": "maria.gonzalez@example.com",

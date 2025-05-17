@@ -1,0 +1,81 @@
+---
+// src/pages/404.astro
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout 
+  title="Ups! Algo se extravió - Hogar para Peludos"
+  description="Parece que esta página ha decidido salir de aventura, como un peludo curioso que se escapa del jardín!"
+  image="/icon.png">
+    <main class="pt-32 pb-20">
+        <div class="container mx-auto px-4">
+          <div class="max-w-4xl mx-auto">
+            <div class="text-center mb-12">
+              <h2 class="text-4xl md:text-5xl font-bold text-gray-800">
+                <span class="text-[#76ca99]">Ups!</span> Algo se extravió...
+              </h2>
+              <p class="mt-4 text-xl text-gray-600 max-w-2xl mx-auto">
+                Parece que esta página ha decidido salir de aventura, como un peludo curioso que se escapa del jardín!
+              </p>
+            </div>
+
+            <!-- <div class="flex justify-center mb-12">
+              <img 
+                src="/404-dog.png" 
+                alt="Perrito perdido" 
+                class="w-64 h-64 object-contain"
+                width="256"
+                height="256"
+              >
+            </div> -->
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <!-- Tarjeta de regreso al inicio -->
+              <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
+                <div class="bg-[#76ca99]/10 p-4 rounded-full inline-block mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-[#76ca99]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-gray-800">Regresa al inicio</h3>
+                <p class="text-gray-600 mb-4">Vuelve a la página principal donde encontrarás toda nuestra información.</p>
+                <a 
+                  href="/" 
+                  class="inline-block px-6 py-3 bg-[#76ca99] text-white font-medium rounded-lg hover:bg-[#5cb487] transition-colors shadow-md"
+                >
+                  Ir al inicio
+                </a>
+              </div>
+
+              <!-- Tarjeta de contacto -->
+              <div class="bg-white p-8 rounded-xl shadow-sm border border-gray-100 text-center hover:shadow-md transition-shadow">
+                <div class="bg-[#76ca99]/10 p-4 rounded-full inline-block mb-4">
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 text-[#76ca99]" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                  </svg>
+                </div>
+                <h3 class="text-xl font-bold mb-3 text-gray-800">Contáctanos</h3>
+                <p class="text-gray-600 mb-4">¿No encuentras lo que buscas? Escríbenos y te ayudaremos.</p>
+                <a 
+                  href="/contacto" 
+                  class="inline-block px-6 py-3 border border-[#76ca99] text-[#76ca99] font-medium rounded-lg hover:bg-[#76ca99]/10 transition-colors"
+                >
+                  Ir a contacto
+                </a>
+              </div>
+            </div>
+
+            <div class="mt-12 bg-[#f7fdfb] p-6 rounded-xl border border-[#76ca99]/20 text-center">
+              <h4 class="font-bold text-lg text-gray-800 mb-3">¿Reportando una mascota perdida?</h4>
+              <p class="text-gray-600 mb-4">Si estás buscando reportar una mascota perdida o encontrada, ve directamente a nuestra sección de contacto.</p>
+              <a 
+                  href="/contacto" 
+                  class="inline-block px-6 py-3 bg-[#76ca99] text-white font-medium rounded-lg hover:bg-[#5cb487] transition-colors shadow-md"
+                >
+                    Reportar mascota
+                </a>
+            </div>
+          </div>
+        </div>
+    </main>
+</Layout>
